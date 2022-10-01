@@ -1,11 +1,15 @@
+import { Fragment } from 'react';
 import './App.css';
-import { Button } from '@material-ui/core';
-
+import NavBar from './components/UI/NavBar';
 
 function App() {
-  return <div className="App">
-    <Button color="primary">Movie Buff</Button>
-  </div>;
+  return (
+    <Fragment>
+      <div className="App">
+        <NavBar />
+      </div>
+    </Fragment>
+  );
 }
 
 export default App;

@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 
 const NavBar = () => {
   return (
-    <AppBar>
+    <AppBar position="sticky">
       <Toolbar sx={{ justifyContent: 'space-between' }}>
         <Typography variant="h4">Movie Buff</Typography>
         <div />

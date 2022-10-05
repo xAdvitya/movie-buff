@@ -3,7 +3,7 @@ import { Fragment, useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import NavBar from './components/UI/NavBar';
-import Container from './components/UI/Container';
+import MovieCard from './components/UI/MovieCard';
 
 function App() {
   const [movies, setMoviesList] = useState();
@@ -59,7 +59,7 @@ function App() {
 
       <h2>vote_average :{movies && movies.results[0].vote_average}</h2>
 
-      {movies && <Container movies={movies} />}
+      {movies && <MovieCard movies={movies} />}
     </Fragment>
   );
 }

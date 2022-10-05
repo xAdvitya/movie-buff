@@ -10,10 +10,9 @@ import {
 import { Fragment } from 'react';
 
 const DropDown = (props) => {
-  props.genres && console.log(props.genres);
 
   const inputHandler = (event) => {
-    console.log(event.target.value);
+    // console.log(event.target.value);
 
     //make a global movie list which updates *useEffect[]* 
     //setMovies() 
@@ -22,7 +21,7 @@ const DropDown = (props) => {
     <Fragment>
       <FormControl
         variant="standard"
-        sx={{ m: 1, minWidth: 120 }}
+        sx={{ m: 1, minWidth: 300 }}
         color="success"
       >
         <InputLabel id="demo-simple-select-label">select gener</InputLabel>

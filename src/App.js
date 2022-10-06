@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import NavBar from './components/UI/NavBar';
 import MovieCard from './components/UI/MovieCard';
+import { CardActionArea, Grid } from '@mui/material';
 
 function App() {
   const [movies, setMoviesList] = useState();
@@ -49,16 +50,6 @@ function App() {
   return (
     <Fragment>
       <NavBar genres={genreList} />
-      {/* <Switch>
-        <div className="App">
-          <Route exact path="/home" component={null} />
-        </div>
-      </Switch> */}
-
-      <h2>{movies && movies.results[0].original_title}</h2>
-
-      <h2>vote_average :{movies && movies.results[0].vote_average}</h2>
-
       {movies && <MovieCard movies={movies} />}
     </Fragment>
   );

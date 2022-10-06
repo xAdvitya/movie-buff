@@ -6,11 +6,19 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea, Grid } from '@mui/material';
 
 const MovieCard = (props) => {
+  const lengthSettler = (text) => {
+    if (text.length > 301) {
+      return `${text.substring(0, 300)}...Read More`;
+    } else {
+      return text;
+    }
+  };
+
   return (
-    <Grid container direction={'row'} justify="center">
+    <Grid container direction={'row'} justify="center" spacing={6}>
       {props.movies.results.map((movie) => (
         <Grid item xs={4}>
-          <Card sx={{ maxWidth: 345 }}>
+          <Card sx={{ maxWidth: 345, backgroundColor: '#dfe4e9' }}>
             <CardActionArea>
               <CardMedia
                 component="img"
@@ -22,7 +30,7 @@ const MovieCard = (props) => {
                   {movie.title}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {movie.overview}
+                  {lengthSettler(movie.overview)}
                 </Typography>
               </CardContent>
             </CardActionArea>

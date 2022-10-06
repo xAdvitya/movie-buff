@@ -6,9 +6,9 @@ import DropDown from './DropDown';
 
 const NavBar = (props) => {
   return (
-    <AppBar position="sticky">
+    <AppBar position="sticky" color="warning">
       <Toolbar sx={{ justifyContent: 'space-between' }}>
-        <Typography variant="h4">Movie Buff</Typography>
+        <Typography variant="h4">MOVIE BUFF</Typography>
         <div />
         <div />
         <div />

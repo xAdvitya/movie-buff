@@ -10,20 +10,14 @@ import {
 import { Fragment } from 'react';
 
 const DropDown = (props) => {
-
   const inputHandler = (event) => {
     // console.log(event.target.value);
-
-    //make a global movie list which updates *useEffect[]* 
-    //setMovies() 
+    //make a global movie list which updates *useEffect[]*
+    //setMovies()
   };
   return (
     <Fragment>
-      <FormControl
-        variant="standard"
-        sx={{ m: 1, minWidth: 300 }}
-        color="success"
-      >
+      <FormControl variant="standard" sx={{ m: 1, minWidth: 300 }}>
         <InputLabel id="demo-simple-select-label">select gener</InputLabel>
         <Select
           labelId="demo-simple-select-label"
@@ -33,7 +27,9 @@ const DropDown = (props) => {
         >
           {props.genres &&
             props.genres.map((genre) => (
-              <MenuItem value={genre.name} key={genre.id}>{genre.name + ''}</MenuItem>
+              <MenuItem value={genre.name} key={genre.id}>
+                {genre.name + ''}
+              </MenuItem>
             ))}
         </Select>
       </FormControl>

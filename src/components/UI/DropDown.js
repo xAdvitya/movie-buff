@@ -1,3 +1,4 @@
+import { ControlCamera } from '@material-ui/icons';
 import {
   AppBar,
   Button,
@@ -11,14 +12,20 @@ import { Fragment } from 'react';
 
 const DropDown = (props) => {
   const inputHandler = (event) => {
-    // console.log(event.target.value);
-    //make a global movie list which updates *useEffect[]*
+    const generId = event.target.value;
+    console.log(generId);
+    async function f() {
+      await props.control.setcurrentGenre(generId);
+    }
+    f();
+
+    console.log(props.control.movies.results);
     //setMovies()
   };
   return (
     <Fragment>
       <FormControl variant="standard" sx={{ m: 1, minWidth: 300 }}>
-        <InputLabel id="demo-simple-select-label">select gener</InputLabel>
+        <InputLabel id="demo-simple-select-label">select genre</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
@@ -27,7 +34,7 @@ const DropDown = (props) => {
         >
           {props.genres &&
             props.genres.map((genre) => (
-              <MenuItem value={genre.name} key={genre.id}>
+              <MenuItem value={genre.id} key={genre.id}>
                 {genre.name + ''}
               </MenuItem>
             ))}

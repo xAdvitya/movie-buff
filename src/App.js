@@ -8,31 +8,49 @@ import { CardActionArea, Grid } from '@mui/material';
 
 function App() {
   const [movies, setMoviesList] = useState();
-  const [currentGener, setCurrentGener] = useState();
-  const [page, setPage] = useState();
+  const [currentGenre, setcurrentGenre] = useState();
+  const [page, setPage] = useState(1);
   const [genreList, setGenreList] = useState();
 
+  const controlProps = {
+    movies,
+    setMoviesList,
+    currentGenre,
+    setcurrentGenre,
+    page,
+    setPage,
+    genreList,
+    setGenreList,
+  };
+
   useEffect(() => {
-    async function getGener() {
+    async function getGenre() {
       const data = await rawAxios.get(
         'https://api.themoviedb.org/3/genre/movie/list?api_key=f4872214e631fc876cb43e6e30b7e731&language=en-US'
       );
       setGenreList(data.data.genres);
     }
-    getGener();
+    getGenre();
   }, []);
 
   useEffect(() => {
-    async function getMovies(page, currentGener) {
-      const data = await rawAxios.get(
-        'https://api.themoviedb.org/3/discover/movie?api_key=f4872214e631fc876cb43e6e30b7e731&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1'
-      );
-      setMoviesList(data.data);
-      if (data.data) console.log(data.data);
-      else console.log('empty');
+    async function getMovies(currentGenre, page) {
+      if (currentGenre) {
+        const data = await rawAxios.get(
+          `https://api.themoviedb.org/3/discover/movie?api_key=f4872214e631fc876cb43e6e30b7e731&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${currentGenre}`
+        );
+
+        await setMoviesList(data.data);
+      } else {
+        console.log('else');
+        const data = await rawAxios.get(
+          `https://api.themoviedb.org/3/discover/movie?api_key=f4872214e631fc876cb43e6e30b7e731&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`
+        );
+        await setMoviesList(data.data);
+      }
     }
-    getMovies();
-  }, []);
+    getMovies(currentGenre, page);
+  }, [currentGenre, page]);
 
   //original_title
   //results.
@@ -49,8 +67,8 @@ function App() {
 
   return (
     <Fragment>
-      <NavBar genres={genreList} />
-      {movies && <MovieCard movies={movies} />}
+      <NavBar genres={genreList} control={controlProps} />
+      {controlProps.movies && <MovieCard movies={controlProps.movies} />}
     </Fragment>
   );
 }

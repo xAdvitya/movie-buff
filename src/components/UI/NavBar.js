@@ -13,8 +13,7 @@ const NavBar = (props) => {
         <div />
         <div />
         <div />
-
-        <DropDown genres={props.genres} />
+        <DropDown genres={props.genres} control={props.control} />
 
         <Button variant="contained" edge="end" color="success">
           search

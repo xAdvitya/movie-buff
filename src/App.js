@@ -5,6 +5,7 @@ import './App.css';
 import NavBar from './components/UI/NavBar';
 import MovieCard from './components/UI/MovieCard';
 import { CardActionArea, Grid } from '@mui/material';
+import Search from './components/pages/Search';
 
 function App() {
   const [movies, setMoviesList] = useState();
@@ -37,20 +38,20 @@ function App() {
     async function getMovies(currentGenre, page) {
       if (currentGenre) {
         const data = await rawAxios.get(
-          `https://api.themoviedb.org/3/discover/movie?api_key=f4872214e631fc876cb43e6e30b7e731&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${currentGenre}`
+          `https://api.themoviedb.org/3/discover/movie?api_key=f4872214e631fc876cb43e6e30b7e731&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=${page}&with_genres=${currentGenre}`
         );
 
-        await setMoviesList(data.data);
+        setMoviesList(data.data);
       } else {
         console.log('else');
         const data = await rawAxios.get(
           `https://api.themoviedb.org/3/discover/movie?api_key=f4872214e631fc876cb43e6e30b7e731&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`
         );
-        await setMoviesList(data.data);
+        setMoviesList(data.data);
       }
     }
     getMovies(currentGenre, page);
-  }, [currentGenre, page]);
+  }, [currentGenre, page, setMoviesList]);
 
   //original_title
   //results.
@@ -68,7 +69,19 @@ function App() {
   return (
     <Fragment>
       <NavBar genres={genreList} control={controlProps} />
-      {controlProps.movies && <MovieCard movies={controlProps.movies} />}
+      <Switch>
+        {controlProps.movies && (
+          <Route
+            path="/"
+            render={() => <MovieCard movies={controlProps.movies} />}
+            exact
+          />
+        )}
+        <Route 
+        path="/search"
+        render={()=><Search/>}
+        />
+      </Switch>
     </Fragment>
   );
 }

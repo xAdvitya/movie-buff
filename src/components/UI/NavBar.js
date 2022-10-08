@@ -3,19 +3,22 @@ import { AppBar, Button } from '@mui/material';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import DropDown from './DropDown';
+import { Link } from 'react-router-dom';
 
 const NavBar = (props) => {
   return (
     <AppBar position="sticky" color="warning">
       <Toolbar sx={{ justifyContent: 'space-between' }}>
-        <Typography variant="h4">MOVIE BUFF</Typography>
+        <Link to="/">
+          <Typography variant="h4">MOVIE BUFF</Typography>
+        </Link>
         <div />
         <div />
         <div />
         <div />
         <DropDown genres={props.genres} control={props.control} />
 
-        <Button variant="contained" edge="end" color="success">
+        <Button href="/search" variant="contained" edge="end" color="success">
           search
         </Button>
       </Toolbar>

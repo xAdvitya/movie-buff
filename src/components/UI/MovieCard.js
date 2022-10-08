@@ -18,7 +18,7 @@ const MovieCard = (props) => {
     <Grid container direction={'row'} justify="center" spacing={6}>
       {props.movies.results.map((movie) => (
         <Grid item xs={4}>
-          <Card sx={{ maxWidth: 345, backgroundColor: '#dfe4e9' }}>
+          <Card sx={{ maxWidth: 345, backgroundColor: '#FCF5E5' }}>
             <CardActionArea>
               <CardMedia
                 component="img"

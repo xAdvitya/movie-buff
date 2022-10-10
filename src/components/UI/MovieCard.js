@@ -29,9 +29,11 @@ const MovieCard = (props) => {
                 <Typography gutterBottom variant="h5" component="div">
                   {movie.title}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {lengthSettler(movie.overview)}
-                </Typography>
+                {movie.overview && (
+                  <Typography variant="body2" color="text.secondary">
+                    {lengthSettler(movie.overview)}
+                  </Typography>
+                )}
               </CardContent>
             </CardActionArea>
           </Card>

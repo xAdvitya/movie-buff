@@ -7,24 +7,6 @@ import { Fragment, useEffect, useState } from 'react';
 import MovieCard from '../UI/MovieCard';
 import rawAxios from 'axios';
 
-//https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&query=${searchKeyWord}&language=en-US&include_adult=false
-
-const DUMMY_DATA = {
-  "page": 1,
-  "results": [
-    {
-      "name": "naruto",
-      "id": 279728
-    },
-    {
-      "name": "naruto shippuden",
-      "id": 279734
-    }
-  ],
-  "total_pages": 1,
-  "total_results": 2
-};
-
 const Search = () => {
   const [searchResults, setSearchResults] = useState();
 
@@ -37,16 +19,13 @@ const Search = () => {
   };
 
   async function searchMovies(searchText) {
-    console.log(
-      `https://api.themoviedb.org/3/search/movie?api_key=f4872214e631fc876cb43e6e30b7e731&query=${searchText}&language=en-US&include_adult=false`
-    );
     const data = await rawAxios.get(
-      `https://api.themoviedb.org/3/search/keyword?api_key=f4872214e631fc876cb43e6e30b7e731&query=naruto&page=1`
+      `https://api.themoviedb.org/3/search/movie?api_key=f4872214e631fc876cb43e6e30b7e731&query=${searchText}&language=en-US&include_adult=false`
     );
 
     await setSearchResults(data.data);
 
-    console.log(data.data);
+    console.log(data.data.results[0]);
   }
 
   return (
@@ -63,8 +42,7 @@ const Search = () => {
       </Grid>
 
       <Route path="/search/:searchText">
-        {/* {searchResults && <MovieCard movies={searchResults} />} */}
-        {searchResults && <MovieCard movies={DUMMY_DATA} />}
+        {searchResults && <MovieCard movies={searchResults} />}
       </Route>
     </>
   );

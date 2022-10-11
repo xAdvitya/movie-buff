@@ -1,9 +1,8 @@
 import { TextField } from '@material-ui/core';
 import { Grid } from '@mui/material';
-import * as React from 'react';
 import { useHistory } from 'react-router-dom';
-import { Redirect, Route } from 'react-router-dom';
-import { Fragment, useEffect, useState } from 'react';
+import { Route } from 'react-router-dom';
+import { Fragment, useState } from 'react';
 import MovieCard from '../UI/MovieCard';
 import rawAxios from 'axios';
 
@@ -23,7 +22,7 @@ const Search = () => {
       `https://api.themoviedb.org/3/search/movie?api_key=f4872214e631fc876cb43e6e30b7e731&query=${searchText}&language=en-US&include_adult=false`
     );
 
-    await setSearchResults(data.data);
+    setSearchResults(data.data);
 
     console.log(data.data.results[0]);
   }

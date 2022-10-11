@@ -4,7 +4,6 @@ import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import NavBar from './components/UI/NavBar';
 import MovieCard from './components/UI/MovieCard';
-import { CardActionArea, Grid } from '@mui/material';
 import Search from './components/pages/Search';
 
 function App() {

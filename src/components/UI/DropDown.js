@@ -1,13 +1,4 @@
-import { ControlCamera } from '@material-ui/icons';
-import {
-  AppBar,
-  Button,
-  FormControl,
-  IconButton,
-  InputLabel,
-  MenuItem,
-  Select,
-} from '@mui/material';
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import { Fragment } from 'react';
 
 const DropDown = (props) => {
@@ -20,7 +11,6 @@ const DropDown = (props) => {
     f();
 
     console.log(props.control.movies.results);
-    //setMovies()
   };
   return (
     <Fragment>

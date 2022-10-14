@@ -4,6 +4,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import DropDown from './DropDown';
 import { Link, Route } from 'react-router-dom';
+import MovieModal from './MovieModal';
 
 const NavBar = (props) => {
   return (
@@ -21,9 +22,11 @@ const NavBar = (props) => {
         <Route path="/" exact>
         <DropDown genres={props.genres} control={props.control} />
         </Route>
+        <MovieModal/>
         <Button href="/search" variant="contained" edge="end" color="success">
           search
         </Button>
+        
       </Toolbar>
     </AppBar>
   );

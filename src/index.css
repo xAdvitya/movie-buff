@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  background-color: #FAF9F6;
+  background-color: #EEE2DC;
   
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -12,5 +12,9 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-    background-color: #c8d7e6;
+    background-color: #ffffff;
+}
+
+.MuiSelect-outlined{
+  color: red;
 }

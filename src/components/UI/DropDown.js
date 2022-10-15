@@ -14,8 +14,22 @@ const DropDown = (props) => {
   };
   return (
     <Fragment>
-      <FormControl variant="standard" sx={{ m: 1, minWidth: 300 }}>
-        <InputLabel id="demo-simple-select-label">select genre</InputLabel>
+      <FormControl
+        sx={{
+          m: 1,
+          minWidth: 135,
+          color: '#AC3B61',
+        }}
+        size="small"
+      >
+        <InputLabel
+          sx={{
+            color: '#AC3B61',
+          }}
+          id="demo-simple-select-label"
+        >
+          select genre
+        </InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
@@ -24,7 +38,14 @@ const DropDown = (props) => {
         >
           {props.genres &&
             props.genres.map((genre) => (
-              <MenuItem value={genre.id} key={genre.id}>
+              <MenuItem
+                sx={{
+                  color: '#AC3B61',
+                  m:1
+                }}
+                value={genre.id}
+                key={genre.id}
+              >
                 {genre.name + ''}
               </MenuItem>
             ))}

@@ -8,10 +8,10 @@ import MovieModal from './MovieModal';
 
 const NavBar = (props) => {
   return (
-    <AppBar position="sticky" color="warning">
+    <AppBar position="sticky" style={{ background: '#EDC7B7' }}>
       <Toolbar sx={{ justifyContent: 'space-between' }}>
         <Link to="/">
-          <Typography variant="h4" color="info">
+          <Typography variant="h4" style={{ color: '#AC3B61' }}>
             MOVIE BUFF
           </Typography>
         </Link>
@@ -19,14 +19,22 @@ const NavBar = (props) => {
         <div />
         <div />
         <div />
+        <div />
+        <div />
+        <div />
         <Route path="/" exact>
-        <DropDown genres={props.genres} control={props.control} />
+          <DropDown genres={props.genres} control={props.control} />
         </Route>
-        <MovieModal/>
-        <Button href="/search" variant="contained" edge="end" color="success">
+        {/* <MovieModal /> */}
+        <Button
+          href="/search"
+          variant="contained"
+          edge="end"
+          color="success"
+          style={{ background: '#AC3B61' }}
+        >
           search
         </Button>
-        
       </Toolbar>
     </AppBar>
   );

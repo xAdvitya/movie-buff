@@ -18,7 +18,7 @@ const MovieCard = (props) => {
     <Grid container direction={'row'} justify="center" spacing={6}>
       {props.movies.results.map((movie) => (
         <Grid item xs={4}>
-          <Card sx={{ maxWidth: 345, backgroundColor: '#FCF5E5' }}>
+          <Card sx={{ maxWidth: 345, backgroundColor: '#ece3e3' }}>
             <CardActionArea>
               {console.log(
                 `https://image.tmdb.org/t/p/w500/${movie.poster_path}`

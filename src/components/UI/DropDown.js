@@ -41,7 +41,7 @@ const DropDown = (props) => {
               <MenuItem
                 sx={{
                   color: '#AC3B61',
-                  m:1
+                  m: 1,
                 }}
                 value={genre.id}
                 key={genre.id}

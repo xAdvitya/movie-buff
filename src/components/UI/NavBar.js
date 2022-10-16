@@ -31,7 +31,7 @@ const NavBar = (props) => {
           variant="contained"
           edge="end"
           color="success"
-          style={{ background: '#AC3B61' }}
+          style={{ background: '#123C69' }}
         >
           search
         </Button>

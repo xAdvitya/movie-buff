@@ -7,6 +7,13 @@ import { Link, Route } from 'react-router-dom';
 import MovieModal from './MovieModal';
 
 const NavBar = (props) => {
+  const loadMoreHandler = () => {
+    const currentPage = props.control.page + 1;
+    props.control.setPage(currentPage);
+    const currentMovieList  = props.control.movies
+    console.log(props.control.previousMovieList)
+  };
+
   return (
     <AppBar position="sticky" style={{ background: '#EDC7B7' }}>
       <Toolbar sx={{ justifyContent: 'space-between' }}>
@@ -34,6 +41,16 @@ const NavBar = (props) => {
           style={{ background: '#123C69' }}
         >
           search
+        </Button>
+
+        <Button
+          variant="contained"
+          edge="end"
+          color="success"
+          style={{ background: '#123C69' }}
+          onClick={loadMoreHandler}
+        >
+          load more
         </Button>
       </Toolbar>
     </AppBar>

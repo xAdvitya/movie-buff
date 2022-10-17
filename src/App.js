@@ -12,6 +12,7 @@ function App() {
   const [currentGenre, setcurrentGenre] = useState();
   const [page, setPage] = useState(1);
   const [genreList, setGenreList] = useState();
+  let previousMovieList = [];
 
   const controlProps = {
     movies,
@@ -22,6 +23,7 @@ function App() {
     setPage,
     genreList,
     setGenreList,
+    previousMovieList,
   };
 
   useEffect(() => {
@@ -42,14 +44,18 @@ function App() {
         );
 
         setMoviesList(data.data);
+        previousMovieList.push(data.data);
       } else {
-        console.log('else');
         const data = await rawAxios.get(
           `https://api.themoviedb.org/3/discover/movie?api_key=f4872214e631fc876cb43e6e30b7e731&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`
         );
         setMoviesList(data.data);
+
+        setMoviesList(data.data);
+        previousMovieList.push(data.data);
       }
     }
+
     getMovies(currentGenre, page);
   }, [currentGenre, page, setMoviesList]);
 

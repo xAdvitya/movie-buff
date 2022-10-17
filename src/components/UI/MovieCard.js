@@ -20,10 +20,6 @@ const MovieCard = (props) => {
         <Grid item xs={4}>
           <Card sx={{ maxWidth: 345, backgroundColor: '#ece3e3' }}>
             <CardActionArea>
-              {console.log(
-                `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-              )}
-
               {movie.poster_path && (
                 <CardMedia
                   component="img"

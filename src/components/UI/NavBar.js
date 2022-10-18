@@ -11,7 +11,7 @@ const NavBar = (props) => {
     const currentPage = props.control.page + 1;
     props.control.setPage(currentPage);
     const currentMovieList  = props.control.movies
-    console.log(props.control.previousMovieList)
+    console.log(props.control.previousMovieList.length)
   };
 
   return (

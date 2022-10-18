@@ -12,7 +12,7 @@ function App() {
   const [currentGenre, setcurrentGenre] = useState();
   const [page, setPage] = useState(1);
   const [genreList, setGenreList] = useState();
-  let previousMovieList = [];
+  const [previousMovieList, setPreviousMovieList] = useState();
 
   const controlProps = {
     movies,
@@ -24,6 +24,7 @@ function App() {
     genreList,
     setGenreList,
     previousMovieList,
+    setPreviousMovieList,
   };
 
   useEffect(() => {
@@ -44,20 +45,32 @@ function App() {
         );
 
         setMoviesList(data.data);
-        previousMovieList.push(data.data);
+
+        setPreviousMovieList((previousMovieList) => {
+          if (!previousMovieList) return [...data.data.results];
+          else {
+            console.log(previousMovieList.results);
+            return [...previousMovieList.results, ...data.data.results];
+          }
+        });
       } else {
         const data = await rawAxios.get(
           `https://api.themoviedb.org/3/discover/movie?api_key=f4872214e631fc876cb43e6e30b7e731&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`
         );
         setMoviesList(data.data);
 
-        setMoviesList(data.data);
-        previousMovieList.push(data.data);
+        setPreviousMovieList((previousMovieList) => {
+          if (!previousMovieList) return [...data.data.results];
+          else {
+            console.log(previousMovieList.results);
+            return [...previousMovieList.results, ...data.data.results];
+          }
+        });
       }
     }
 
     getMovies(currentGenre, page);
-  }, [currentGenre, page, setMoviesList]);
+  }, [currentGenre, page, setMoviesList, previousMovieList]);
 
   //original_title
   //results.

@@ -12,6 +12,7 @@ function App() {
   const [currentGenre, setcurrentGenre] = useState();
   const [page, setPage] = useState(1);
   const [genreList, setGenreList] = useState();
+  const [nextPage, setNextPage] = useState(false);
   const [previousMovieList, setPreviousMovieList] = useState();
 
   const controlProps = {
@@ -20,7 +21,9 @@ function App() {
     currentGenre,
     setcurrentGenre,
     page,
+    nextPage,
     setPage,
+    setNextPage,
     genreList,
     setGenreList,
     previousMovieList,
@@ -44,33 +47,40 @@ function App() {
           `https://api.themoviedb.org/3/discover/movie?api_key=f4872214e631fc876cb43e6e30b7e731&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${currentGenre}`
         );
 
-        setMoviesList(data.data);
-
         setPreviousMovieList((previousMovieList) => {
-          if (!previousMovieList) return [...data.data.results];
+          if (previousMovieList === undefined) return [data.data];
           else {
-            console.log(previousMovieList.results);
-            return [...previousMovieList.results, ...data.data.results];
+            if (nextPage) {
+              console.log(previousMovieList);
+              setNextPage(false);
+              return [...previousMovieList, data.data];
+            }
           }
         });
+        setMoviesList(previousMovieList.results);
       } else {
         const data = await rawAxios.get(
           `https://api.themoviedb.org/3/discover/movie?api_key=f4872214e631fc876cb43e6e30b7e731&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`
         );
-        setMoviesList(data.data);
 
         setPreviousMovieList((previousMovieList) => {
-          if (!previousMovieList) return [...data.data.results];
+          if (previousMovieList === undefined) return [data.data];
           else {
-            console.log(previousMovieList.results);
-            return [...previousMovieList.results, ...data.data.results];
+            if (nextPage) {
+              console.log(previousMovieList);
+              setNextPage(false);
+              
+              return [...previousMovieList, data.data];
+            }
           }
         });
+
+        setMoviesList(previousMovieList.results);
       }
     }
 
     getMovies(currentGenre, page);
-  }, [currentGenre, page, setMoviesList, previousMovieList]);
+  }, [currentGenre, page, setMoviesList, previousMovieList, nextPage]);
 
   //original_title
   //results.
@@ -87,11 +97,12 @@ function App() {
 
   // console.log(genreList);
 
+  console.log('/////////////', controlProps.movies);
   return (
     <Fragment>
       <NavBar genres={genreList} control={controlProps} />
       <Switch>
-        {controlProps.movies && (
+        {controlProps.previousMovieList && controlProps.movies && (
           <Route
             path="/"
             render={(props) => <MovieCard movies={controlProps.movies} />}

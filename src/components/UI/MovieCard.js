@@ -4,6 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, Grid } from '@mui/material';
+import { MovieSharp } from '@material-ui/icons';
 
 const MovieCard = (props) => {
   const lengthSettler = (text) => {
@@ -14,6 +15,10 @@ const MovieCard = (props) => {
     }
   };
 
+  const print = () => {
+    console.log('MovieCard', props);
+  };
+  print();
   return (
     <Grid container direction={'row'} justify="center" spacing={6}>
       {props.movies.results.map((movie) => (

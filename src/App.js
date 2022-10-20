@@ -48,7 +48,7 @@ function App() {
         );
 
         setPreviousMovieList((previousMovieList) => {
-          if (previousMovieList === undefined) return [data.data];
+          if (!previousMovieList) return [data.data];
           else {
             if (nextPage) {
               console.log(previousMovieList);
@@ -64,21 +64,20 @@ function App() {
         );
 
         setPreviousMovieList((previousMovieList) => {
-          if (previousMovieList === undefined) return [data.data];
-          else {
+          if (!previousMovieList) {
+            console.log('!previousMovieList', previousMovieList);
+            return [data.data];
+          } else {
             if (nextPage) {
-              console.log(previousMovieList);
+              console.log('else', previousMovieList);
               setNextPage(false);
-              
               return [...previousMovieList, data.data];
             }
           }
         });
-
         setMoviesList(previousMovieList.results);
       }
     }
-
     getMovies(currentGenre, page);
   }, [currentGenre, page, setMoviesList, previousMovieList, nextPage]);
 

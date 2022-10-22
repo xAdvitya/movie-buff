@@ -75,11 +75,11 @@ function App() {
             }
           }
         });
-        setMoviesList(previousMovieList.results);
+        setMoviesList(previousMovieList);
       }
     }
     getMovies(currentGenre, page);
-  }, [currentGenre, page, setMoviesList, previousMovieList, nextPage]);
+  }, [currentGenre, page, setMoviesList, nextPage]);
 
   //original_title
   //results.
@@ -88,11 +88,6 @@ function App() {
   //release_date
   //vote_average
 
-  //https://api.themoviedb.org/3/discover/movie?api_key=f4872214e631fc876cb43e6e30b7e731&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=28
-
-  //https://api.themoviedb.org/3/discover/movie?api_key=f4872214e631fc876cb43e6e30b7e731&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1
-
-  //https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&query=${searchKeyWord}&language=en-US&include_adult=false
 
   // console.log(genreList);
 

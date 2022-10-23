@@ -63,19 +63,19 @@ function App() {
           `https://api.themoviedb.org/3/discover/movie?api_key=f4872214e631fc876cb43e6e30b7e731&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`
         );
 
-        setPreviousMovieList((previousMovieList) => {
           if (!previousMovieList) {
-            console.log('!previousMovieList', previousMovieList);
-            return [data.data];
+            console.log('!previousMovieList', previousMovieList); 
+            console.log('!data', data.data); 
+            setPreviousMovieList(previousMovieList)
           } else {
             if (nextPage) {
               console.log('else', previousMovieList);
               setNextPage(false);
-              return [...previousMovieList, data.data];
+              setPreviousMovieList([...previousMovieList, data.data])
+              // return [...previousMovieList, data.data];
             }
           }
-        });
-        setMoviesList(previousMovieList);
+        setMoviesList(previousMovieList.results);   
       }
     }
     getMovies(currentGenre, page);

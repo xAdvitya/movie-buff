@@ -21,7 +21,7 @@ const MovieCard = (props) => {
   print();
   return (
     <Grid container direction={'row'} justify="center" spacing={6}>
-      {props.movies.results.map((movie) => (
+      {props.movies.map((movie) => (
         <Grid item xs={4}>
           <Card sx={{ maxWidth: 345, backgroundColor: '#ece3e3' }}>
             <CardActionArea>

@@ -28,7 +28,6 @@ function App() {
     genreList,
     setGenreList,
     previousMovieList,
-    // setPreviousMovieList,
   };
 
   useEffect(() => {
@@ -48,20 +47,28 @@ function App() {
           `https://api.themoviedb.org/3/discover/movie?api_key=f4872214e631fc876cb43e6e30b7e731&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${currentGenre}`
         );
 
-        if (!previousMovieList.current) {
-          console.log('!previousMovieList', previousMovieList.current);
-          console.log('!data', data.data);
-          previousMovieList.current = [data.data];
+        if (!nextPage) {
+          console.log('undefined');
+          console.log(nextPage);
+          previousMovieList.current = undefined;
+          previousMovieList.current = data.data.results;
+          setNextPage(false);
         } else {
-          if (nextPage) {
-            console.log('else', previousMovieList);
-            setNextPage(false);
-            previousMovieList.current = [...previousMovieList.current, data.data]
-          }
+          console.log('not undefined');
+          setNextPage(false);
+          console.log('!data page', data.data.results);
+          previousMovieList.current = [
+            ...previousMovieList.current,
+            ...data.data.results,
+          ];
         }
 
-        setMoviesList(previousMovieList.current[page-1]);
+        setMoviesList([...previousMovieList.current]);
       } else {
+        console.log(nextPage);
+        if (!currentGenre && page === 1) {
+          previousMovieList.current = undefined;
+        }
         const data = await rawAxios.get(
           `https://api.themoviedb.org/3/discover/movie?api_key=f4872214e631fc876cb43e6e30b7e731&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`
         );
@@ -72,17 +79,21 @@ function App() {
           previousMovieList.current = data.data.results;
         } else {
           if (nextPage) {
+            console.log(nextPage);
             console.log('else', previousMovieList);
             setNextPage(false);
             console.log('!data page', data.data.results);
-            previousMovieList.current = [...previousMovieList.current, ...data.data.results];
+            previousMovieList.current = [
+              ...previousMovieList.current,
+              ...data.data.results,
+            ];
           }
         }
         console.log(
           'setMoviesList ,previousMovieList',
           ...previousMovieList.current
         );
-        setMoviesList([...previousMovieList.current]);  
+        setMoviesList([...previousMovieList.current]);
       }
     }
     getMovies(currentGenre, page);

@@ -12,7 +12,8 @@ function App() {
   const [currentGenre, setcurrentGenre] = useState();
   const [page, setPage] = useState(1);
   const [genreList, setGenreList] = useState();
-  const [nextPage, setNextPage] = useState(false);
+  // const [nextPage, setNextPage] = useState(false);
+  const nextPage = useRef(false);
   // const [previousMovieList, setPreviousMovieList] = useState();
   const previousMovieList = useRef();
 
@@ -24,7 +25,7 @@ function App() {
     page,
     nextPage,
     setPage,
-    setNextPage,
+    // setNextPage,
     genreList,
     setGenreList,
     previousMovieList,
@@ -47,15 +48,15 @@ function App() {
           `https://api.themoviedb.org/3/discover/movie?api_key=f4872214e631fc876cb43e6e30b7e731&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${currentGenre}`
         );
 
-        if (!nextPage) {
+        if (!nextPage.current) {
           console.log('undefined');
           console.log(nextPage);
           previousMovieList.current = undefined;
           previousMovieList.current = data.data.results;
-          setNextPage(false);
+          nextPage.current = false;
         } else {
           console.log('not undefined');
-          setNextPage(false);
+          nextPage.current = false;
           console.log('!data page', data.data.results);
           previousMovieList.current = [
             ...previousMovieList.current,
@@ -78,10 +79,10 @@ function App() {
           console.log('!data page', data.data.results);
           previousMovieList.current = data.data.results;
         } else {
-          if (nextPage) {
+          if (nextPage.current) {
             console.log(nextPage);
             console.log('else', previousMovieList);
-            setNextPage(false);
+            nextPage.current = false;
             console.log('!data page', data.data.results);
             previousMovieList.current = [
               ...previousMovieList.current,

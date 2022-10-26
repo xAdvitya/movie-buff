@@ -8,11 +8,10 @@ import MovieModal from './MovieModal';
 
 const NavBar = (props) => {
   const loadMoreHandler = () => {
-
     const currentPage = props.control.page + 1;
     props.control.setPage(currentPage);
-    props.control.setNextPage(true);
-    console.log(props.control.previousMovieList.length)
+    props.control.nextPage.current = true;
+    console.log(props.control.previousMovieList.length);
   };
 
   return (

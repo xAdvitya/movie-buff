@@ -36,6 +36,16 @@ const DropDown = (props) => {
           label="select gener"
           onChange={inputHandler}
         >
+          <MenuItem
+            sx={{
+              color: '#AC3B61',
+              m: 1,
+            }}
+            value={false}
+            key={'1x'}
+          >
+            None
+          </MenuItem>
           {props.genres &&
             props.genres.map((genre) => (
               <MenuItem

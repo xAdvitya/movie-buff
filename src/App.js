@@ -12,9 +12,7 @@ function App() {
   const [currentGenre, setcurrentGenre] = useState();
   const [page, setPage] = useState(1);
   const [genreList, setGenreList] = useState();
-  // const [nextPage, setNextPage] = useState(false);
   const nextPage = useRef(false);
-  // const [previousMovieList, setPreviousMovieList] = useState();
   const previousMovieList = useRef();
 
   const controlProps = {
@@ -25,7 +23,6 @@ function App() {
     page,
     nextPage,
     setPage,
-    // setNextPage,
     genreList,
     setGenreList,
     previousMovieList,
@@ -99,15 +96,6 @@ function App() {
     }
     getMovies(currentGenre, page);
   }, [currentGenre, page, setMoviesList, nextPage, previousMovieList]);
-
-  //original_title
-  //results.
-  //page
-  //overview
-  //release_date
-  //vote_average
-
-  // console.log(genreList);
 
   console.log('controlProps.movies', controlProps.movies);
   return (

@@ -105,7 +105,7 @@ function App() {
         {controlProps.previousMovieList && controlProps.movies && (
           <Route
             path="/"
-            render={(props) => <MovieCard movies={controlProps.movies} />}
+            render={(props) => <MovieCard movies={controlProps.movies} control={controlProps}/>}
             exact
           />
         )}

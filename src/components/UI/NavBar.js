@@ -7,12 +7,12 @@ import { Link, Route } from 'react-router-dom';
 import MovieModal from './MovieModal';
 
 const NavBar = (props) => {
-  const loadMoreHandler = () => {
-    const currentPage = props.control.page + 1;
-    props.control.setPage(currentPage);
-    props.control.nextPage.current = true;
-    console.log(props.control.previousMovieList.length);
-  };
+  // const loadMoreHandler = () => {
+  //   const currentPage = props.control.page + 1;
+  //   props.control.setPage(currentPage);
+  //   props.control.nextPage.current = true;
+  //   console.log(props.control.previousMovieList.length);
+  // };
 
   return (
     <AppBar position="sticky" style={{ background: '#EDC7B7' }}>
@@ -43,7 +43,7 @@ const NavBar = (props) => {
           search
         </Button>
 
-        <Button
+        {/* <Button
           variant="contained"
           edge="end"
           color="success"
@@ -51,7 +51,7 @@ const NavBar = (props) => {
           onClick={loadMoreHandler}
         >
           load more
-        </Button>
+        </Button> */}
       </Toolbar>
     </AppBar>
   );

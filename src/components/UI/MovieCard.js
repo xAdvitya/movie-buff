@@ -28,7 +28,7 @@ const MovieCard = (props) => {
   print();
   return (
     <>
-      <Grid container direction={'row'} justify="center" spacing={6}>
+      <Grid container direction={'row'} justify="space-between" spacing={6}>
         {props.movies.map((movie) => (
           <Grid item xs={4}>
             <Card sx={{ maxWidth: 345, backgroundColor: '#ece3e3' }}>
@@ -64,15 +64,19 @@ const MovieCard = (props) => {
         ))}
       </Grid>
 
-      <Button
-        variant="contained"
-        edge="end"
-        color="success"
-        style={{ background: '#123C69' }}
-        onClick={loadMoreHandler}
-      >
-        load more
-      </Button>
+      <Grid container direction={'row'} justifyContent="center" spacing={6}>
+        <Grid item xs="auto">
+          <Button
+            variant="contained"
+            edge="end"
+            color="success"
+            style={{ background: '#123C69' }}
+            onClick={loadMoreHandler}
+          >
+            load more
+          </Button>
+        </Grid>
+      </Grid>
     </>
   );
 };

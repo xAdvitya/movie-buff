@@ -30,7 +30,7 @@ const MovieCard = (props) => {
     <>
       <Grid container direction={'row'} justify="space-between" spacing={6}>
         {props.movies.map((movie) => (
-          <Grid item xs={4}>
+          <Grid item xs={12} sm={4}>
             <Card sx={{ maxWidth: 345, backgroundColor: '#ece3e3' }}>
               <CardActionArea>
                 {movie.poster_path && (

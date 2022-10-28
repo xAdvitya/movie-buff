@@ -22,18 +22,16 @@ const Search = () => {
       `https://api.themoviedb.org/3/search/movie?api_key=f4872214e631fc876cb43e6e30b7e731&query=${searchText}&language=en-US&include_adult=false`
     );
 
-    setSearchResults(data.data);
-
-    console.log(data.data.results[0]);
+    setSearchResults(data.data.results);
+    console.log("////////////////",data.data);
   }
 
   return (
     <>
-      <Grid container justifyContent={'center'} xs={12}>
-        <Grid container item xs={6}>
+      <Grid container direction={'row'} justifyContent="center" >
+        <Grid container item xs="auto">
           <TextField
             onChange={searchHandler}
-            sx={{ minWidth: 650 }}
             label="SEARCH"
             id="fullWidth"
           />

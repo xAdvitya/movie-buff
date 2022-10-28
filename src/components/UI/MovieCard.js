@@ -23,7 +23,7 @@ const MovieCard = (props) => {
   };
 
   const print = () => {
-    console.log('MovieCard', props);
+    console.log('MovieCard', props.movies);
   };
   print();
   return (

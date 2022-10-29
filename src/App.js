@@ -46,15 +46,11 @@ function App() {
         );
 
         if (!nextPage.current) {
-          console.log('undefined');
-          console.log(nextPage);
           previousMovieList.current = undefined;
           previousMovieList.current = data.data.results;
           nextPage.current = false;
         } else {
-          console.log('not undefined');
           nextPage.current = false;
-          console.log('!data page', data.data.results);
           previousMovieList.current = [
             ...previousMovieList.current,
             ...data.data.results,
@@ -63,41 +59,29 @@ function App() {
 
         setMoviesList([...previousMovieList.current]);
       } else {
-        console.log(nextPage);
         if (!currentGenre && page === 1) {
           previousMovieList.current = undefined;
         }
         const data = await rawAxios.get(
           `https://api.themoviedb.org/3/discover/movie?api_key=f4872214e631fc876cb43e6e30b7e731&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`
         );
-        console.log('!previousMovieList', previousMovieList.current);
         if (!previousMovieList.current) {
-          console.log('!previousMovieList', previousMovieList.current);
-          console.log('!data page', data.data.results);
           previousMovieList.current = data.data.results;
         } else {
           if (nextPage.current) {
-            console.log(nextPage);
-            console.log('else', previousMovieList);
             nextPage.current = false;
-            console.log('!data page', data.data.results);
             previousMovieList.current = [
               ...previousMovieList.current,
               ...data.data.results,
             ];
           }
         }
-        console.log(
-          'setMoviesList ,previousMovieList',
-          ...previousMovieList.current
-        );
         setMoviesList([...previousMovieList.current]);
       }
     }
     getMovies(currentGenre, page);
   }, [currentGenre, page, setMoviesList, nextPage, previousMovieList]);
 
-  console.log('controlProps.movies', controlProps.movies);
   return (
     <Fragment>
       <NavBar genres={genreList} control={controlProps} />

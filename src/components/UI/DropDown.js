@@ -4,13 +4,10 @@ import { Fragment } from 'react';
 const DropDown = (props) => {
   const inputHandler = (event) => {
     const generId = event.target.value;
-    console.log(generId);
     async function f() {
       await props.control.setcurrentGenre(generId);
     }
     f();
-
-    console.log(props.control.movies.results);
   };
   return (
     <Fragment>

@@ -8,7 +8,6 @@ import { MovieSharp } from '@material-ui/icons';
 
 const MovieCard = (props) => {
   const loadMoreHandler = () => {
-    console.log('props.control.previousMovieList.length');
     const currentPage = props.control.page + 1;
     props.control.setPage(currentPage);
     props.control.nextPage.current = true;
@@ -22,10 +21,6 @@ const MovieCard = (props) => {
     }
   };
 
-  const print = () => {
-    console.log('MovieCard', props.movies);
-  };
-  print();
   return (
     <>
       <Grid container direction={'row'} justify="space-between" spacing={6}>

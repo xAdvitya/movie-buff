@@ -22,7 +22,7 @@ const MovieCard = (props) => {
 
   return (
     <>
-      <Grid container direction={'row'} justify="space-between" spacing={6}>
+      <Grid container direction={'row'}  justifyContent="space-between" spacing={6}>
         {props.movies.map((movie) => (
           <Grid item xs={12} sm={4}>
             <Card sx={{ maxWidth: 345, backgroundColor: '#ece3e3' }}>

@@ -11,7 +11,7 @@ const NavBar = (props) => {
     <AppBar position="sticky" style={{ background: '#EDC7B7' }}>
       <Toolbar sx={{ justifyContent: 'space-between' }}>
         <Link to="/">
-          <Typography variant="h4" style={{ color: '#AC3B61' }}>
+          <Typography variant="h6" style={{ color: '#AC3B61' }}>
             MOVIE BUFF
           </Typography>
         </Link>

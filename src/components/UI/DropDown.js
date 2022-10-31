@@ -23,13 +23,13 @@ const DropDown = (props) => {
           sx={{
             color: '#AC3B61',
           }}
-          id="demo-simple-select-label"
+          id="select-label"
         >
           select genre
         </InputLabel>
         <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
+          labelId="select-label"
+          id="select"
           label="select gener"
           onChange={inputHandler}
         >

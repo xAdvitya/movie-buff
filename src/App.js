@@ -5,7 +5,6 @@ import './App.css';
 import NavBar from './components/UI/NavBar';
 import MovieCard from './components/UI/MovieCard';
 import Search from './components/pages/Search';
-import MovieModal from './components/UI/MovieModal';
 
 function App() {
   const [movies, setMoviesList] = useState();

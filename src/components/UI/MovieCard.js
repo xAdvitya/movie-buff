@@ -12,13 +12,13 @@ const MovieCard = (props) => {
     props.control.nextPage.current = true;
   };
 
-  const lengthSettler = (text) => {
-    if (text.length > 301) {
-      return `${text.substring(0, 300)}...Read More`;
-    } else {
-      return text;
-    }
-  };
+  // const lengthSettler = (text) => {
+  //   if (text.length > 301) {
+  //     return `${text.substring(0, 300)}...Read More`;
+  //   } else {
+  //     return text;
+  //   }
+  // };
 
   return (
     <>
@@ -46,11 +46,10 @@ const MovieCard = (props) => {
                   <Typography gutterBottom variant="h5" component="div">
                     {movie.title}
                   </Typography>
-                  {movie.overview && (
-                    <Typography variant="body2" color="text.secondary">
-                      {lengthSettler(movie.overview)}
-                    </Typography>
-                  )}
+
+                  <Typography variant="body2" color="text.secondary">
+                    {movie.overview}
+                  </Typography>
                 </CardContent>
               </CardActionArea>
             </Card>

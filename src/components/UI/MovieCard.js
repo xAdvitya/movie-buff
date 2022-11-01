@@ -21,10 +21,16 @@ const MovieCard = (props) => {
   // };
 
   return (
-    <>
-      <Grid container direction={'row'}  justifyContent="space-between" spacing={6}>
+    <React.Fragment>
+      <Grid
+        sx={{ backgroundColor: 'blue' }}
+        container
+        direction={'row'}
+        justifyContent="space-between"
+        spacing={6}
+      >
         {props.movies.map((movie) => (
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} sm={4} sx={{ backgroundColor: 'yellow' }}>
             <Card sx={{ maxWidth: 345, backgroundColor: '#ece3e3' }}>
               <CardActionArea>
                 {movie.poster_path && (
@@ -70,7 +76,7 @@ const MovieCard = (props) => {
           </Button>
         </Grid>
       </Grid>
-    </>
+    </React.Fragment>
   );
 };
 

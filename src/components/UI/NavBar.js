@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppBar, Button } from '@mui/material';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import Typography from '@mui/material/Typography';
 import DropDown from './DropDown';
 import { Link, Route } from 'react-router-dom';
 

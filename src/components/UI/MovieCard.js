@@ -27,7 +27,7 @@ const MovieCard = (props) => {
           container
           direction={'row'}
           justifyContent="space-between"
-          spacing={6}
+
         >
           {props.movies.map((movie) => (
             <Grid item xs={12} sm={4}>

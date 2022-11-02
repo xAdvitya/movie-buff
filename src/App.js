@@ -82,19 +82,21 @@ function App() {
   }, [currentGenre, page, setMoviesList, nextPage, previousMovieList]);
 
   return (
-    <Fragment>
+    <div>
       <NavBar genres={genreList} control={controlProps} />
       <Switch>
         {controlProps.previousMovieList && controlProps.movies && (
           <Route
             path="/"
-            render={(props) => <MovieCard movies={controlProps.movies} control={controlProps}/>}
+            render={(props) => (
+              <MovieCard movies={controlProps.movies} control={controlProps} />
+            )}
             exact
           />
         )}
         <Route path="/search" render={() => <Search />} />
       </Switch>
-    </Fragment>
+    </div>
   );
 }
 

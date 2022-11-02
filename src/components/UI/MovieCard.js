@@ -12,59 +12,53 @@ const MovieCard = (props) => {
     props.control.nextPage.current = true;
   };
 
-  // const lengthSettler = (text) => {
-  //   if (text.length > 301) {
-  //     return `${text.substring(0, 300)}...Read More`;
-  //   } else {
-  //     return text;
-  //   }
-  // };
+  const movies = props.movies.map((movie) => {
+    return (
+      <Grid
+        key={movie.title}
+        item
+        xs="auto"
+        sm="auto"
+        // sx={{  marginLeft: '20px', marginRight: '20px'  }}
+      >
+        <Card sx={{ maxWidth: 345, backgroundColor: '#ece3e3' }}>
+          <CardActionArea>
+            {movie.poster_path && (
+              <CardMedia
+                component="img"
+                image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                alt={movie.title}
+              />
+            )}
 
+            {!movie.poster_path && (
+              <CardMedia
+                component="img"
+                image="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"
+                alt={movie.title}
+              />
+            )}
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                {movie.title}
+              </Typography>
+
+              <Typography variant="body2" color="text.secondary">
+                {movie.overview}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+      </Grid>
+    );
+  });
   return (
-    <>
-      <Container>
-        <Grid
-          container
-          direction={'row'}
-          justifyContent="space-between"
+    <div>
+      <Grid container justifyContent="center" spacing={6}>
+        {movies}
+      </Grid>
 
-        >
-          {props.movies.map((movie) => (
-            <Grid item xs={12} sm={4}>
-              <Card sx={{ maxWidth: 345, backgroundColor: '#ece3e3' }}>
-                <CardActionArea>
-                  {movie.poster_path && (
-                    <CardMedia
-                      component="img"
-                      image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                      alt={movie.title}
-                    />
-                  )}
-
-                  {!movie.poster_path && (
-                    <CardMedia
-                      component="img"
-                      image="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"
-                      alt={movie.title}
-                    />
-                  )}
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      {movie.title}
-                    </Typography>
-
-                    <Typography variant="body2" color="text.secondary">
-                      {movie.overview}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
-
-      <Grid container direction={'row'} justifyContent="center" spacing={6}>
+      <Grid container justifyContent="center" spacing={6}>
         <Grid item xs="auto">
           <Button
             variant="contained"
@@ -77,7 +71,7 @@ const MovieCard = (props) => {
           </Button>
         </Grid>
       </Grid>
-    </>
+    </div>
   );
 };
 
